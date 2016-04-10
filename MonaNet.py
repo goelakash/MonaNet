@@ -37,15 +37,23 @@ Y_train = np.array(y1)
 Y_test = np.array(y2)
 
 print len(X_train), len(Y_train), len(X_test), len(Y_test)
-print X_train[:5], Y_train[:5]
 
 model = Sequential()
-model.add(Dense(100, input_dim=2, init='uniform'))
+model.add(Dense(5, input_dim=2, init='uniform'))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
-# model.add(Dense(100, init='uniform'))
-# model.add(Activation('relu'))
-# model.add(Dropout(0.5))
+model.add(Dense(10, init='uniform'))
+model.add(Activation('relu'))
+model.add(Dropout(0.5))
+model.add(Dense(50, init='uniform'))
+model.add(Activation('relu'))
+model.add(Dropout(0.5))
+model.add(Dense(10, init='uniform'))
+model.add(Activation('relu'))
+model.add(Dropout(0.5))
+model.add(Dense(5, init='uniform'))
+model.add(Activation('relu'))
+model.add(Dropout(0.5))
 model.add(Dense(3, init='uniform'))
 model.add(Activation('relu'))
 model.add(Dropout(0.5))
@@ -55,7 +63,7 @@ model.compile(loss='mean_squared_error', optimizer=sgd)
 
 model.fit(X_train, Y_train,
           nb_epoch=20,
-          batch_size=20,
+          batch_size=400,
           show_accuracy=True)
 
-score = model.evaluate(X_test, Y_test, batch_size=20)
+score = model.evaluate(X_test, Y_test, batch_size=400)
