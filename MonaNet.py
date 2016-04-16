@@ -13,25 +13,25 @@ w = image_file.shape[1]
 
 model = Sequential()
 
-model.add(Dense(300, input_dim=2, init='uniform'))
+model.add(Dense(500, input_dim=2, init='uniform'))
 model.add(Activation('relu'))
 
-model.add(Dense(600, init='uniform'))
+model.add(Dense(500, init='uniform'))
 model.add(Activation('relu'))
 
-model.add(Dense(600, init='uniform'))
+model.add(Dense(500, init='uniform'))
 model.add(Activation('relu'))
 
-model.add(Dense(600, init='uniform'))
+model.add(Dense(500, init='uniform'))
 model.add(Activation('relu'))
 
-model.add(Dense(300, init='uniform'))
+model.add(Dense(500, init='uniform'))
 model.add(Activation('relu'))
 
 model.add(Dense(3, init='uniform'))
 model.add(Activation('linear'))
 
-sgd = SGD(lr=0.1, momentum=0.94)
+# sgd = SGD(lr=0.1, momentum=0.94)
 model.compile(loss='mean_squared_error', optimizer=RMSprop())
 
 x1 = []
@@ -44,7 +44,7 @@ for i in xrange(h):
 
 zip_1 = [i for i in zip(x1,y1)]
 
-nb_epochs = 500
+nb_epochs = 1000
 
 for e in xrange(nb_epochs):
 
@@ -87,4 +87,4 @@ for e in xrange(nb_epochs):
         output_image.append(row)
 
     output_image = np.array(output_image)
-    cv2.imwrite('out_mona_3663(x100)_e'+str(e)+'.png',output_image)
+    cv2.imwrite('out_mona_500x5_e'+str(e)+'.png',output_image)
